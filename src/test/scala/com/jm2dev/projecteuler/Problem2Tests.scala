@@ -54,30 +54,52 @@ class Problem2Tests extends Spec
       actual should be(expected)
     }
   }
-}
 
-class Fibonacci() {
+  describe("Sum even members which its value is less than 10") {
+    it("should return members which are less than 10") {
+      given("I can generate a Fibonacci sequence of arbitrary length")
+      val expected = List(1, 2, 3, 5, 8)
 
-  def build(numberOfElements: Int): List[Int] = {
-    
-    def calculate(lista: List[Int]): List[Int] = {
-      if ( lista.size == numberOfElements ) 
-        return lista
-      else {
-        val candidate = addThem(lista)
-        calculate( candidate )
-      }
+      when("I want the sequence of value less than 10")
+      val actual = new Fibonacci().generate(10)
+
+      then("I get 1, 2, 3, 5, 8")
+      actual should be(expected)
     }
 
-    calculate(List())
+    it("should return the list of even members less than 10") {
+      given("I can generate a Fibonacci sequence of arbitrary length")
+      val expected = List(2, 8)
+
+      when("I want to get the list of even mebers with value less than 10")
+      val secuencia = new Fibonacci().generate(10)
+      val actual = secuencia.filter(_ % 2 == 0)
+
+      then("I get 2, 8")
+      actual should be(expected)
+    }
+
+    it("should return the sum of even member with value less than 10") {
+      given("I can generate a Fibonacci sequence of arbitrary length")
+      val expected = 10
+
+      when("I want to sum even memebers with value less than 10")
+      val secuencia = new Fibonacci().generate(10)
+      val evenValues = secuencia.filter( _ % 2 == 0 )
+      val actual = evenValues.foldLeft(0){ (m: Int, n: Int) => m + n }
+
+      then("I get 10")
+      actual should be(expected)
+    }
+
+    it("solution to problem 2: 4613732") {
+      val secuencia = new Fibonacci().generate(4000000)
+      val evenValues = secuencia.filter( _ % 2 == 0 )
+      val actual = evenValues.foldLeft(0){ (m: Int, n: Int) => m + n }
+
+      actual should be(4613732)
+    }
   }
 
-  private def addThem(lista: List[Int]): List[Int] = {
-    if ( lista.isEmpty ) List(1)
-    else if ( lista.size == 1) List(1, 2)
-    else {
-      val next = lista.last + lista.reverse.tail.head
-      lista ::: List(next)
-    } 
-  }
 }
+
