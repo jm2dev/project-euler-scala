@@ -14,7 +14,7 @@ class Problem2Tests extends Spec
       val expected = List(1)
 
       when("I calculate the first element")
-      val actual = new Fibonacci(1).build
+      val actual = new Fibonacci().build(1)
 
       then("I get a list of one item, which it's 1")
       actual should be(expected)
@@ -25,7 +25,7 @@ class Problem2Tests extends Spec
       val expected = List(1, 2)
 
       when("I want the first two elements")
-      val actual = new Fibonacci(2).build
+      val actual = new Fibonacci().build(2)
 
       then("I get 1 and 2")
       actual should be(expected)
@@ -36,7 +36,7 @@ class Problem2Tests extends Spec
       val expected = List(1, 2, 3, 5)
 
       when("I want the first four elements")
-      val actual = new Fibonacci(4).build
+      val actual = new Fibonacci().build(4)
 
       then("I get 1, 2, 3, 5")
       actual should be(expected)
@@ -48,7 +48,7 @@ class Problem2Tests extends Spec
       val expected = List(1, 2, 3, 5, 8)
 
       when("I want the first five elements")
-      val actual = new Fibonacci(5).build
+      val actual = new Fibonacci().build(5)
 
       then("I get 1, 2, 3, 5, 8")
       actual should be(expected)
@@ -56,9 +56,9 @@ class Problem2Tests extends Spec
   }
 }
 
-class Fibonacci(numberOfElements: Int) {
+class Fibonacci() {
 
-  def build(): List[Int] = {
+  def build(numberOfElements: Int): List[Int] = {
     
     def calculate(lista: List[Int]): List[Int] = {
       if ( lista.size == numberOfElements ) 
