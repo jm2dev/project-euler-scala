@@ -1,3 +1,6 @@
 target/
 reports/
 
+.idea/
+.idea_modules/
+
