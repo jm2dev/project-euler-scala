@@ -4,3 +4,5 @@ reports/
 .idea/
 .idea_modules/
 
+.ensime
+

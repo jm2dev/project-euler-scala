@@ -13,10 +13,10 @@ class Problem3Tests extends Spec
   with GivenWhenThen
   with ShouldMatchers
 {
+  private val problem3 = new Problem3()
+  
   describe("Prime numbers")
   {
-    private val problem3 = new Problem3()
-
     it("should get next prime factor")
     {
       given("2 is the first prime factor")
